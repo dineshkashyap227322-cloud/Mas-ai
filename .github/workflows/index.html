@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AgentForge — AI Agent Platform</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="dark">
+  <div id="app">
+    <!-- NAV -->
+    <nav>
+      <div class="nav-brand">
+        <div class="brand-icon">⚡</div>
+        <div>
+          <div class="brand-name">AgentForge</div>
+          <div class="brand-sub">AI Agent Management Platform</div>
+        </div>
+      </div>
+      <div class="nav-actions">
+        <div class="view-toggle">
+          <button class="view-btn active" onclick="setView('dashboard')">🏠 Dashboard</button>
+          <button class="view-btn" onclick="setView('logs')">📊 Logs</button>
+        </div>
+        <button class="theme-btn" onclick="toggleTheme()">☀️</button>
+        <button class="create-btn" onclick="openCreate()">+ New Agent</button>
+      </div>
+    </nav>
+
+    <!-- MAIN -->
+    <main id="main-content"></main>
+  </div>
+
+  <!-- CREATE/EDIT MODAL -->
+  <div id="modal-overlay" class="hidden" onclick="closeModal()">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2 id="modal-title">✨ Create New Agent</h2>
+        <button onclick="closeModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Agent Name</label>
+          <input id="f-name" type="text" placeholder="e.g. Atlas, Nova, Cipher..."/>
+        </div>
+        <div class="form-group">
+          <label>Role</label>
+          <select id="f-role">
+            <option>Assistant</option><option>Writer</option><option>Researcher</option>
+            <option>Coder</option><option>Tutor</option><option>Analyst</option>
+            <option>Creative</option><option>Summarizer</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Avatar</label>
+          <div class="avatar-grid" id="avatar-grid"></div>
+        </div>
+        <div class="form-group">
+          <label>Theme Color</label>
+          <div class="color-grid" id="color-grid"></div>
+        </div>
+        <div class="form-group">
+          <label>System Instructions</label>
+          <textarea id="f-instructions" rows="4" placeholder="Describe how this agent should behave..."></textarea>
+        </div>
+        <div class="form-group memory-row">
+          <label>Agent Memory</label>
+          <div class="toggle" id="memory-toggle" onclick="toggleMemory()">
+            <span class="toggle-thumb"></span>
+          </div>
+          <span id="memory-label" class="memory-label">On</span>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-ghost" onclick="closeModal()">Cancel</button>
+        <button class="btn-primary" id="modal-save-btn" onclick="saveAgent()">🚀 Create Agent</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
